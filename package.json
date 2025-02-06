@@ -3,21 +3,20 @@
 	"main": "dist/index.js",
 	"name": "mahjong-gas",
 	"packageManager": "yarn@1.22.22",
-    "version": "0.0.0",
+	"version": "0.0.0",
 	"type": "module",
 	"scripts": {
-        "config:dev": "ln -sf .clasp.dev.json .clasp.json",
-        "deploy": "yarn format && yarn bundle && yarn config:dev && clasp push -f",
+		"bundle": "node ./scripts/bundle.mjs",
+		"deploy": "yarn format && yarn bundle && clasp push -f",
 		"format": "biome format --write ."
 	},
-    "dependencies": {
+	"dependencies": {
 		"@google/clasp": "^2.4.2",
 		"esbuild": "^0.24.0"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^1.9.4",
 		"@types/google-apps-script": "^1.0.85",
-		"lefthook": "^1.8.4",
 		"typescript": "^5.6.3"
 	}
 }
