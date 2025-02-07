@@ -1,0 +1,11 @@
+{
+	"compilerOptions": {
+		"isolatedModules": true,
+		"module": "ESNext",
+		"allowJs": true,
+		"experimentalDecorators": true,
+		"noImplicitReturns": true,
+		"noImplicitAny": true
+	},
+	"include": ["src/**/*"]
+}
