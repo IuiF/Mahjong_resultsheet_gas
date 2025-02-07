@@ -1,3 +1,8 @@
+import { calculateEliminationBonus } from "./services/eliminationBonus";
+import { registerScoreTable } from "./services/registerService";
+import { SHEET_NAMES } from "./constants/sheetConstants";
+import { SHEET_HEADERS } from "./constants/headers";
+
 // テスト用のコード
 function testEliminationBonus() {
 	// テストケース1: 通常の飛ばし（1人が飛ばして、1人が箱下）
@@ -183,4 +188,24 @@ function validateTestResults() {
 	});
 
 	console.log("プレイヤーデータ:", playerData);
+}
+
+function test() {
+	console.log(
+		// calculateScore([30000, 29000, 21000, 20000], "10 - 20"),
+		// calculateIncome(
+		// 	calculateScore([30000, 29000, 21000, 20000], "10 - 20"),
+		// 	"テンニ",
+		// ),
+		// calculateScore([60000, 30000, 15000], "沈み10"),
+		registerScoreTable(
+			["あべ", "いしどう", "むらた", "ふかざわ"],
+			[50000, 21000, 49000, -20000],
+			[1, 3, 2, 4],
+			[false, true, false, false],
+			"四麻",
+			"テンニ",
+			"10 - 20",
+		),
+	);
 }
