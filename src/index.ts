@@ -34,3 +34,32 @@ function executeRegister(): void {
 		}
 	}
 }
+
+function showConfirmationDialog() {
+	// HTMLを生成
+	var html = HtmlService.createHtmlOutput(`
+		<!DOCTYPE html>
+		<html>
+		<head>
+			<script>
+				function execute() {
+					google.script.run.withSuccessHandler(closeDialog).executeRegister();
+				}
+				function closeDialog() {
+					google.script.host.close();
+				}
+			</script>
+		</head>
+		<body>
+			<p>登録を実行しますか？</p>
+			<button onclick="execute()">OK</button>
+			<button onclick="closeDialog()">キャンセル</button>
+		</body>
+		</html>
+	`)
+		.setWidth(300)
+		.setHeight(150);
+
+	// モーダルダイアログを表示
+	SpreadsheetApp.getUi().showModalDialog(html, "確認");
+}
