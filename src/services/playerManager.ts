@@ -35,6 +35,9 @@ export function updatePlayerList(
 		}
 	});
 
+	// 3麻判定
+	const isThreePlayerMahjong = playerNames.length === 3;
+
 	// 各プレイヤーの情報を更新
 	playerNames.forEach((playerName: string, index: number): void => {
 		const playerRowIndex = playerListData.findIndex(
@@ -55,6 +58,14 @@ export function updatePlayerList(
 			totalIncome:
 				playerListData[playerRowIndex][columnIndices.totalIncome] || 0,
 		};
+
+		// 3麻の場合は収支のみを更新
+		if (isThreePlayerMahjong) {
+			sheet
+				.getRange(playerRowIndex + 1, columnIndices.totalIncome + 1)
+				.setValue(currentValues.totalIncome + incomes[index]);
+			return;
+		}
 
 		// 新しい値を計算
 		const newParticipation = currentValues.participation + 1;
